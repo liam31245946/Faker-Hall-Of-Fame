@@ -1,4 +1,6 @@
 With the Fifth Trophy, Faker had once again prove that he is the best mid laner in the world. This is a project I created to Honor him "The GOAT of League of Legends".
+![image](https://github.com/user-attachments/assets/97b7cc77-acfc-4eec-a36d-b95d43306436)
+
 
 ![image](https://github.com/user-attachments/assets/8ce57477-7dd2-4848-b9ae-6f94cb863059)
 
