@@ -91,9 +91,8 @@ const Hero = () => {
           </div>
         </div>
       )}
-      <div>
-        <img src="img/fakerahri.jpg" alt="ahri" className="w-full" />
-      </div>
+
+
       <div
         id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
