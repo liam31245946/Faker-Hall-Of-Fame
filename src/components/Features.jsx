@@ -36,7 +36,7 @@ export const BentoTilt = ({ children, className = "" }) => {
   );
 };
 
-export const BentoCard = ({ src, title, description, isComingSoon }) => {
+export const BentoCard = ({ src, title, description }) => {
   // Local sound toggle state for this video
   const [soundEnabled, setSoundEnabled] = useState(false);
   const toggleSound = () => setSoundEnabled((prev) => !prev);
@@ -83,27 +83,6 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
             <p className="mt-3 max-w-64 text-xs md:text-base">{description}</p>
           )}
         </div>
-
-        {isComingSoon && (
-          <div
-            ref={hoverButtonRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="border-hsla relative flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-5 py-2 text-xs uppercase text-white/20"
-          >
-            {/* Radial gradient hover effect */}
-            <div
-              className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
-              style={{
-                opacity: hoverOpacity,
-                background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
-              }}
-            />
-            <TiLocationArrow className="relative z-20" />
-            <p className="relative z-20">coming soon</p>
-          </div>
-        )}
       </div>
     </div>
   );
@@ -129,7 +108,6 @@ const Features = () => {
               </>
             }
             description="In a thrilling conclusion at The O2 Arena in London, T1 faced BLG once more, emerging victorious with a 3–2 win to claim their fifth World Championship. Lee (Faker) Sang-hyeok, T1's legendary mid laner, was instrumental throughout the tournament and was named Finals MVP for the second time in his career."
-            isComingSoon
           />
         </BentoTilt>
 
