@@ -30,19 +30,17 @@ const About = () => {
     <div id="about" className="min-h-screen w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
         <p className="font-general text-sm uppercase md:text-[10px]">
-          Welcome to Zentry
+          Welcome to Faker Hall of Fame Made By Liam Nguyen
         </p>
 
         <AnimatedTitle
-          title="Disc<b>o</b>ver the world's <br /> largest shared <b>a</b>dventure"
+          title="The Unkillable Demon King"
           containerClass="mt-5 !text-black text-center"
         />
 
         <div className="about-subtext">
-          <p>The Game of Games begins—your life, now an epic MMORPG</p>
           <p className="text-gray-500">
-            Zentry unites every player from countless games and platforms, both
-            digital and physical, into a unified Play Economy
+        Faker has won five World Championships (2013, 2015, 2016, 2023, 2024 the most of any player) and two Mid-Season Invitationals (2016, 2017), and has 10 combined LCK and Champions Korea titles.
           </p>
         </div>
       </div>
@@ -50,7 +48,7 @@ const About = () => {
       <div className="h-dvh w-screen" id="clip">
         <div className="mask-clip-path about-image">
           <img
-            src="img/about.webp"
+            src="img/fakertrophy.png"
             alt="Background"
             className="absolute left-0 top-0 size-full object-cover"
           />

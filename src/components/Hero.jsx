@@ -1,23 +1,22 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-import { TiLocationArrow } from "react-icons/ti";
 import { useEffect, useRef, useState } from "react";
-
-import Button from "./Button";
 import VideoPreview from "./VideoPreview";
+import { FiVolume, FiVolumeX } from "react-icons/fi"; // Import speaker icons
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
-
   const [loading, setLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
+  const [isMuted, setIsMuted] = useState(true); // Sound toggle state
 
-  const totalVideos = 4;
+  const totalVideos = 6;
   const nextVdRef = useRef(null);
+  const mainVideoRef = useRef(null); // Ref for the main video (the one that plays sound)
 
   const handleVideoLoad = () => {
     setLoadedVideos((prev) => prev + 1);
@@ -31,7 +30,6 @@ const Hero = () => {
 
   const handleMiniVdClick = () => {
     setHasClicked(true);
-
     setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
   };
 
@@ -80,13 +78,12 @@ const Hero = () => {
     });
   });
 
-  const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
+  const getVideoSrc = (index) => `videos/champion-${index}.mp4`;
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
         <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
-          {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
           <div className="three-body">
             <div className="three-body__dot"></div>
             <div className="three-body__dot"></div>
@@ -94,7 +91,9 @@ const Hero = () => {
           </div>
         </div>
       )}
-
+      <div>
+        <img src="img/fakerahri.jpg" alt="ahri" className="w-full" />
+      </div>
       <div
         id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
@@ -128,45 +127,37 @@ const Hero = () => {
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
           />
+
+          {/* Main video element with conditional mute */}
           <video
+            ref={mainVideoRef}
             src={getVideoSrc(
               currentIndex === totalVideos - 1 ? 1 : currentIndex
             )}
             autoPlay
             loop
-            muted
+            muted={isMuted}
             className="absolute left-0 top-0 size-full object-cover object-center"
             onLoadedData={handleVideoLoad}
           />
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
-          G<b>A</b>MING
-        </h1>
+        {/* Speaker toggle icon in the top-right corner */}
+        <div
+          onClick={() => setIsMuted(!isMuted)}
+          className="absolute top-4 right-4 z-50 p-2 bg-black bg-opacity-50 rounded-full cursor-pointer"
+        >
+          {isMuted ? (
+            <FiVolumeX size={24} color="white" />
+          ) : (
+            <FiVolume size={24} color="white" />
+          )}
+        </div>
 
         <div className="absolute left-0 top-0 z-40 size-full">
-          <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading text-blue-100">
-              redefi<b>n</b>e
-            </h1>
-
-            <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Enter the Metagame Layer <br /> Unleash the Play Economy
-            </p>
-
-            <Button
-              id="watch-trailer"
-              title="Watch trailer"
-              leftIcon={<TiLocationArrow />}
-              containerClass="bg-yellow-300 flex-center gap-1"
-            />
-          </div>
+          <div className="mt-24 px-5 sm:px-10"></div>
         </div>
       </div>
-
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
-        G<b>A</b>MING
-      </h1>
     </div>
   );
 };
